@@ -6,6 +6,18 @@
 #include <stdio.h> 
 #include <vector>
 #include <filesystem>
+// #include <Python.h>
+
+
+// void run_visualize_py(const char* script_file) {
+//     Py_Initialize();
+//     FILE* fp = fopen(scriptFile, "r");
+//     if (fp != nullptr) {
+//         PyRun_SimpleFile(fp, scriptFile);
+//         fclose(fp);
+//     } else std::cerr << "Could not open file: " << scriptFile << std::endl;
+//     Py_Finalize();
+// }
 
 /*
 This is the main driver function for the pupil segmentation pipeline.
@@ -45,4 +57,8 @@ int main(int argc, char** argv) {
     // Draw coordinate on frame (for data visualization)
     segment.annotate_pupil_on_frame(data_loader.processed_frames, data_loader.processed_frames.size());
     std::cout << "Annotated pupil coordinates on frames." << std::endl;
+
+    // Run visualize.py 
+    // std::string script_file = std::__fs::filesystem::path(__FILE__).parent_path() / "visualize.py";
+    // run_visualize_py(script_file.c_str());
 }

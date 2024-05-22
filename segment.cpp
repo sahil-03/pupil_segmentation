@@ -14,7 +14,6 @@ Segment::Segment() {
 
 void Segment::segment_pupil_frames(std::vector<cv::Mat>& processed_frames) {
     this->pupil_coordinates.resize(processed_frames.size());
-    #pragma omp parallel for
     for (int i = 0; i < processed_frames.size(); ++i) {
         this->pupil_coordinates[i] = this->find_pupil_coordinates(processed_frames[i]);
     }
